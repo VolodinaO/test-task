@@ -1,0 +1,26 @@
+CREATE SCHEMA book_database;
+
+CREATE TABLE authors (
+  id BIGINT PRIMARY KEY IDENTITY,
+  second_name VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  patronymic_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE genres (
+  id BIGINT PRIMARY KEY IDENTITY,
+  genre_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE books (
+  id BIGINT PRIMARY KEY IDENTITY,
+  book_name VARCHAR(255) NOT NULL,
+  book_publisher VARCHAR(255) NOT NULL,
+  book_year INTEGER NOT NULL,
+  book_city VARCHAR(255) NOT NULL,
+  author_id BIGINT NOT NULL,
+  genre_id BIGINT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES AUTHORS(ID),
+  FOREIGN KEY (genre_id) REFERENCES GENRES(ID)
+);
+
